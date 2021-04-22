@@ -1,3 +1,4 @@
+@Registration
 Feature: Registering for One Stop Shop
 
   Scenario: A signed in user can register
