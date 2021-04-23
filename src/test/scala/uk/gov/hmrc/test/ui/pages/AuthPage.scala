@@ -37,7 +37,7 @@ object AuthPage extends BasePage with BrowserDriver with Eventually {
     driver.findElement(By.cssSelector("Input[value='Submit']")).click()
 
     eventually {
-      driver.getCurrentUrl should be(RegisteredCompanyNamePage.url + "/registeredCompanyName")
+      driver.getCurrentUrl should be(RegisteredCompanyNamePage.url + endUrl)
     }
   }
 
