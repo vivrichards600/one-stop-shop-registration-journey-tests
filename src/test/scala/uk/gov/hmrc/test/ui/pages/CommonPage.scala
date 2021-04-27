@@ -36,12 +36,9 @@ object CommonPage extends BrowserDriver with Matchers {
   }
 
   def provideDate(date: String): Unit = {
-    val day   = date.substring(1, 2)
-    val month = date.substring(4, 5)
-    val year  = date.substring(7, 10)
-    driver.findElement(By.id("value.day")).sendKeys(day)
-    driver.findElement(By.id("value.month")).sendKeys(month)
-    driver.findElement(By.id("value.year")).sendKeys(year)
+    driver.findElement(By.id("value.day")).sendKeys(date.substring(0, 2))
+    driver.findElement(By.id("value.month")).sendKeys(date.substring(3, 5))
+    driver.findElement(By.id("value.year")).sendKeys(date.substring(6, 10))
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 
