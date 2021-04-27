@@ -35,6 +35,16 @@ object CommonPage extends BrowserDriver with Matchers {
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 
+  def provideDate(date: String): Unit = {
+    val day   = date.substring(1, 2)
+    val month = date.substring(4, 5)
+    val year  = date.substring(7, 10)
+    driver.findElement(By.id("value.day")).sendKeys(day)
+    driver.findElement(By.id("value.month")).sendKeys(month)
+    driver.findElement(By.id("value.year")).sendKeys(year)
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+  }
+
   def selectAnswer(data: String): Unit = {
     data match {
       case "yes" => driver.findElement(By.id("value")).click()
