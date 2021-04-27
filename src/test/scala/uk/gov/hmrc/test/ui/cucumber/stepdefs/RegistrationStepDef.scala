@@ -39,4 +39,9 @@ class RegistrationStepDef extends BaseStepDef {
   Then("""^the user should be on the (.*) page$""") { (url: String) =>
     CommonPage.checkUrl(url)
   }
+
+  When("""^the user provides date (.*) on the (.*) page$""") { (date: String, url: String) =>
+    CommonPage.checkUrl(url)
+    CommonPage.provideDate(date)
+  }
 }
