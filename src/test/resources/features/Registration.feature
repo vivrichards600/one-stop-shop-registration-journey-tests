@@ -10,4 +10,11 @@ Feature: Registering for One Stop Shop
     And the user enters GB987654321 on the Uk Vat Number page
     And the user provides date 01/01/2020 on the Uk Vat Effective Date page
     And the user enters ZZ11 9BB on the Uk Vat Registered Postcode page
+    And the user answers yes on the Vat Registered In Eu page
+    And the user adds first member state France on the Vat Registered Eu Member State page
+    And the user adds first VAT number FR123456789 on the Eu Vat Number page
+    And the user answers yes on the Add Additional Eu Vat Details page
+    And the user adds second member state Germany on the Vat Registered Eu Member State page
+    And the user adds second VAT number DE123456789 on the Eu Vat Number page
+    And the user answers no on the Add Additional Eu Vat Details page
 
