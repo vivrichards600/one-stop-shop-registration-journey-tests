@@ -34,8 +34,8 @@ class RegistrationStepDef extends BaseStepDef {
   When("""^the user adds (first|second) (member state|VAT number) (.*) on the (.*) page$""") {
     (index: String, input: String, data: String, url: String) =>
       index match {
-        case "first"  => CommonPage.checkIndexUrl(url + "/1")
-        case "second" => CommonPage.checkIndexUrl(url + "/2")
+        case "first"  => CommonPage.checkUrl(url + "/1")
+        case "second" => CommonPage.checkUrl(url + "/2")
         case _        => throw new Exception("Index doesn't exist")
       }
       CommonPage.enterData(data)

@@ -26,14 +26,8 @@ object CommonPage extends BrowserDriver with Matchers {
   def constructUrl(prettyUrl: String): String =
     (prettyUrl.head.toLower + prettyUrl.tail).replace(" ", "")
 
-  def constructIndexUrl(prettyUrl: String): String =
-    (prettyUrl.head.toLower + prettyUrl.tail).replace(" ", "")
-
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(constructUrl(url))
-
-  def checkIndexUrl(url: String): Unit =
-    driver.getCurrentUrl should endWith(constructIndexUrl(url))
 
   def enterData(data: String): Unit = {
     val inputId = "value"
