@@ -16,9 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.By
-import org.scalatest.exceptions.TestFailedException
 import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage, RegisteredCompanyNamePage}
+import io.cucumber.datatable.DataTable
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -53,5 +52,10 @@ class RegistrationStepDef extends BaseStepDef {
   When("""^the user provides date (.*) on the (.*) page$""") { (date: String, url: String) =>
     CommonPage.checkUrl(url)
     CommonPage.provideDate(date)
+  }
+
+  When("""^the user completes details on the (.*) page$""") { (url: String, dataTable: DataTable) =>
+    CommonPage.checkUrl(url)
+    CommonPage.completeForm(dataTable)
   }
 }

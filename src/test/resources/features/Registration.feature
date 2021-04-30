@@ -17,4 +17,17 @@ Feature: Registering for One Stop Shop
     And the user adds second member state Germany on the Vat Registered Eu Member State page
     And the user adds second VAT number DE123456789 on the Eu Vat Number page
     And the user answers no on the Add Additional Eu Vat Details page
+    And the user completes details on the Business Address page
+      | data         | fieldId    |
+      | 1 The Street | line1      |
+      | Village      | line2      |
+      | Town         | townOrCity |
+      | County       | county     |
+      | AA1 1AA      | postCode   |
+    And the user completes details on the Business Contact Details page
+      | data            | fieldId         |
+      | Joe Bloggs      | fullName        |
+      | 01234567890     | telephoneNumber |
+      | email@test.com  | emailAddress    |
+      | www.website.com | websiteAddress  |
 

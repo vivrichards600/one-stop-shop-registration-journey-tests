@@ -20,6 +20,8 @@ import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import io.cucumber.datatable.DataTable
+import scala.collection.JavaConverters._
 
 object CommonPage extends BrowserDriver with Matchers {
 
@@ -47,6 +49,13 @@ object CommonPage extends BrowserDriver with Matchers {
       case "yes" => driver.findElement(By.id("value")).click()
       case "no"  => driver.findElement(By.id("value-no")).click()
       case _     => throw new Exception("Option doesn't exist")
+    }
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+  }
+
+  def completeForm(dataTable: DataTable): Unit = {
+    dataTable.asMaps[String, String](classOf[String], classOf[String]).asScala.foreach { row =>
+      driver.findElement(By.id(row.get("fieldId"))).sendKeys(row.get("data"))
     }
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
