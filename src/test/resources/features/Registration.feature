@@ -20,7 +20,7 @@ Feature: Registering for One Stop Shop
     And the user completes details on the Business Address page
       | data         | fieldId    |
       | 1 The Street | line1      |
-      | Village      | Line2      |
+      | Village      | line2      |
       | Town         | townOrCity |
       | County       | county     |
       | AA1 1AA      | postCode   |
