@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import io.cucumber.datatable.DataTable
 import scala.collection.JavaConverters._
@@ -30,6 +29,9 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(constructUrl(url))
+
+  def getNonAuthUrl(url: String): Unit =
+    driver.navigate().to("http://localhost:10200/one-stop-shop-registration/" + constructUrl(url))
 
   def enterData(data: String): Unit = {
     val inputId = "value"
