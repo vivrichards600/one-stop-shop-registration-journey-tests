@@ -27,8 +27,14 @@ object CommonPage extends BrowserDriver with Matchers {
   def constructUrl(prettyUrl: String): String =
     (prettyUrl.head.toLower + prettyUrl.tail).replace(" ", "")
 
+  def constructCYAUrl(prettyUrl: String): String =
+    prettyUrl.toLowerCase.replace(" ", "-")
+
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(constructUrl(url))
+
+  def checkCYAUrl(url: String): Unit =
+    driver.getCurrentUrl should endWith(constructCYAUrl(url))
 
   def getNonAuthUrl(url: String): Unit =
     driver.navigate().to("http://localhost:10200/one-stop-shop-registration/" + constructUrl(url))

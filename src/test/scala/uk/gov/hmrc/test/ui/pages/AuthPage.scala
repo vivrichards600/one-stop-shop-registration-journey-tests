@@ -17,28 +17,20 @@
 package uk.gov.hmrc.test.ui.pages
 
 import java.sql.Driver
-
 import org.openqa.selenium.{By, WebDriver}
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import org.scalatest.matchers.should.Matchers
 
 object AuthPage extends BasePage with BrowserDriver with Eventually {
 
   val url: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
   val title       = "Authority Wizard"
 
-  def signIn(endUrl: String): Unit = {
-
-    driver.navigate().to(url)
-
-    driver.findElement(By.name("redirectionUrl")).clear()
-    driver.findElement(By.name("redirectionUrl")).sendKeys(RegisteredCompanyNamePage.url + endUrl)
+  def signIn(): Unit = {
+    driver.getCurrentUrl should startWith(url)
     driver.findElement(By.cssSelector("Input[value='Submit']")).click()
-
-    eventually {
-      driver.getCurrentUrl should be(RegisteredCompanyNamePage.url + endUrl)
-    }
   }
 
 }

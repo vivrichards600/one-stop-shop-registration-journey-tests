@@ -22,7 +22,7 @@ import io.cucumber.datatable.DataTable
 class RegistrationStepDef extends BaseStepDef {
 
   Given("a user is signed in") { () =>
-    AuthPage.signIn("/registeredCompanyName")
+    AuthPage.signIn()
   }
 
   When("""^the user enters (.*) on the (.*) page$""") { (data: String, url: String) =>
@@ -57,5 +57,9 @@ class RegistrationStepDef extends BaseStepDef {
   When("""^the user completes details on the (.*) page$""") { (url: String, dataTable: DataTable) =>
     CommonPage.checkUrl(url)
     CommonPage.completeForm(dataTable)
+  }
+
+  Then("""^the user is at the (.*) page$""") { (url: String) =>
+    CommonPage.checkCYAUrl(url)
   }
 }
