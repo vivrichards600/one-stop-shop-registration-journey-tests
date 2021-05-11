@@ -1,5 +1,5 @@
-@Registration @wip
-Feature: Changing answers in Check Your Answers
+@Registration
+Feature: Check Your Answers
 
   Scenario: Changing answers in Check Your Answers
     Given a user starts at the Is Business Based In Northern Ireland page
@@ -27,6 +27,6 @@ Feature: Changing answers in Check Your Answers
       | www.website.com | websiteAddress  |
     Then the user is at the Check Your Answers page
     And the user changes the answers on the Check Your Answers page
-    | page | data |
-    | Uk Vat Number | GB987366554|
-
+      | page                    | data        |
+      | Registered Company Name | Company Ltd |
+      | Uk Vat Number           | GB987366554 |

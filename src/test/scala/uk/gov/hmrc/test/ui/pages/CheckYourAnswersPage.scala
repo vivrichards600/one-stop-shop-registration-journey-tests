@@ -30,7 +30,8 @@ object CheckYourAnswersPage extends BrowserDriver with Matchers {
       val link = "change" + row.get("page").replace(" ", "")
       driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
       CommonPage.checkUrl(link)
-//      driver.findElement(By.id(row.get("fieldId"))).sendKeys(row.get("data"))
+      driver.findElement(By.id("value")).clear()
+      driver.findElement(By.id("value")).sendKeys(row.get("data"))
+      driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
     }
-//    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
 }
