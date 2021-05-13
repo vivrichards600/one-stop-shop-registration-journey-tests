@@ -36,9 +36,10 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkCYAUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(constructCYAUrl(url))
 
-  def getNonAuthUrl(url: String): Unit =
+  def getNonAuthUrl(url: String): Unit = {
     driver.manage().deleteAllCookies()
     driver.navigate().to("http://localhost:10200/one-stop-shop-registration/" + constructUrl(url))
+  }
 
   def enterData(data: String): Unit = {
     val inputId = "value"
@@ -68,4 +69,7 @@ object CommonPage extends BrowserDriver with Matchers {
     }
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
+
+  def submitRegistration(): Unit =
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
 }
