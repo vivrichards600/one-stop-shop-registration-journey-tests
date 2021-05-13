@@ -33,3 +33,5 @@ Feature: Registering for One Stop Shop
       | email@test.com  | emailAddress    |
       | www.website.com | websiteAddress  |
     Then the user is at the Check Your Answers page
+    Then the user submits their registration
+
