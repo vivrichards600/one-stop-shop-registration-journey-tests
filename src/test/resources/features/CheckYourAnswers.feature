@@ -33,8 +33,8 @@ Feature: Check Your Answers
     When the user is at the Check Your Answers page
     And the user selects the change button for Vat Registered In Eu
     And the user answers yes on the Change Vat Registered In Eu page
-    And the user adds first member state Spain on the Change Vat Registered Eu Member State page
-    And the user adds first VAT number ES123456789 on the Change Eu Vat Number page
+    And the user adds Spain on the first Change Vat Registered Eu Member State page
+    And the user adds ES123456789 on the first Change Eu Vat Number page
     And the user answers no on the Change Add Additional Eu Vat Details page
     Then the user is at the Check Your Answers page
 
