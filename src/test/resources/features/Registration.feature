@@ -29,12 +29,15 @@ Feature: Registering for One Stop Shop
       | Town         | townOrCity |
       | County       | county     |
       | AA1 1AA      | postCode   |
+    And the user adds www.example.com on the first Website page
+    And the user answers yes on the Add Website page
+    And the user adds www.second-example.com on the second Website page
+    And the user answers no on the Add Website page
     And the user completes details on the Business Contact Details page
       | data            | fieldId         |
       | Joe Bloggs      | fullName        |
       | 01234567890     | telephoneNumber |
       | email@test.com  | emailAddress    |
-      | www.website.com | websiteAddress  |
     Then the user is at the Check Your Answers page
     Then the user submits their registration
 

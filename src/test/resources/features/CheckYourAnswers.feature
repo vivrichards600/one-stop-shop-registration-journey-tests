@@ -19,12 +19,13 @@ Feature: Check Your Answers
       | Town         | townOrCity |
       | County       | county     |
       | AA1 1AA      | postCode   |
+    And the user adds www.example.com on the first Website page
+    And the user answers no on the Add Website page
     And the user completes details on the Business Contact Details page
       | data            | fieldId         |
       | Joe Bloggs      | fullName        |
       | 01234567890     | telephoneNumber |
       | email@test.com  | emailAddress    |
-      | www.website.com | websiteAddress  |
     Then the user is at the Check Your Answers page
     And the user changes the answers on the Check Your Answers page
       | page                    | data        |
