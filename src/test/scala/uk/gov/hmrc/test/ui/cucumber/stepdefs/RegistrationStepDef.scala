@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage}
+import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage, StartDatePage}
 import io.cucumber.datatable.DataTable
 
 class RegistrationStepDef extends BaseStepDef {
@@ -65,5 +65,10 @@ class RegistrationStepDef extends BaseStepDef {
   Then("""^the user submits their registration$""") { () =>
     CommonPage.submitRegistration()
     CommonPage.checkUrl("applicationComplete")
+  }
+
+  When("""^the user chooses Next Period on the Start Date page$""") { () =>
+    CommonPage.checkUrl("startDate")
+    StartDatePage.selectNextPeriod()
   }
 }

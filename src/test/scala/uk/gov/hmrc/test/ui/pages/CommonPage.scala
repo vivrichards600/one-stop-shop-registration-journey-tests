@@ -58,7 +58,7 @@ object CommonPage extends BrowserDriver with Matchers {
     data match {
       case "yes" => driver.findElement(By.id("value")).click()
       case "no"  => driver.findElement(By.id("value-no")).click()
-      case _     => throw new Exception("Option doesn't exist")
+      case id    => driver.findElement(By.id(id)).click()
     }
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
