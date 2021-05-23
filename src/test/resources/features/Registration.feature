@@ -22,6 +22,7 @@ Feature: Registering for One Stop Shop
     And the user adds Germany on the second Vat Registered Eu Member State page
     And the user adds DE123456789 on the second Eu Vat Number page
     And the user answers no on the Add Additional Eu Vat Details page
+    And the user chooses Next Period on the Start Date page
     And the user completes details on the Business Address page
       | data         | fieldId    |
       | 1 The Street | line1      |

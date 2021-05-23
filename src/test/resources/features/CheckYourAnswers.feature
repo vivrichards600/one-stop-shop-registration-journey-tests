@@ -12,6 +12,7 @@ Feature: Check Your Answers
     And the user provides date 01/01/2020 on the Uk Vat Effective Date page
     And the user enters ZZ11 9BB on the Uk Vat Registered Postcode page
     And the user answers no on the Vat Registered In Eu page
+    And the user chooses Next Period on the Start Date page
     And the user completes details on the Business Address page
       | data         | fieldId    |
       | 1 The Street | line1      |
