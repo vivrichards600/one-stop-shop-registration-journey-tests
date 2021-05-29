@@ -25,6 +25,12 @@ class RegistrationStepDef extends BaseStepDef {
     AuthPage.signIn()
   }
 
+  Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
+    (vrn: String) =>
+      AuthActions.loginUsingScpStub("Organisation", vrn)
+      AuthActions.selectMfaSuccess()
+  }
+
   When("""^the user enters (.*) on the (.*) page$""") { (data: String, url: String) =>
     CommonPage.checkUrl(url)
     CommonPage.enterData(data)
