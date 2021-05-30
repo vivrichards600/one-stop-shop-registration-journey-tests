@@ -5,6 +5,7 @@ Feature: Registering for One Stop Shop
     Given a user starts at the Is Business Based In Northern Ireland page
     And the user answers yes on the Is Business Based In Northern Ireland page
     And the user signs in as an Organisation Admin with VAT enrolment 123456789 and strong credentials
+    And the user answers yes on the Check Vat Details page
     When the user enters Foo Ltd on the Registered Company Name page
     And the user answers yes on the Has Trading Name page
     And the user adds Foo on the first Trading Name page
@@ -18,9 +19,13 @@ Feature: Registering for One Stop Shop
     And the user answers yes on the Vat Registered In Eu page
     And the user selects France on the first Vat Registered Eu Member State page
     And the user adds FR123456789 on the first Eu Vat Number page
+    And the user chooses no on the first Has Fixed Establishment page
+    And the user clicks continue on the first Check Eu Vat Details page
     And the user answers yes on the Add Additional Eu Vat Details page
     And the user selects Germany on the second Vat Registered Eu Member State page
     And the user adds DE123456789 on the second Eu Vat Number page
+    And the user chooses no on the second Has Fixed Establishment page
+    And the user clicks continue on the second Check Eu Vat Details page
     And the user answers no on the Add Additional Eu Vat Details page
     And the user chooses Next Period on the Start Date page
     And the user completes details on the Business Address page

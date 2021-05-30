@@ -5,6 +5,7 @@ Feature: Check Your Answers
     Given a user starts at the Is Business Based In Northern Ireland page
     And the user answers yes on the Is Business Based In Northern Ireland page
     And the user signs in as an Organisation Admin with VAT enrolment 123456789 and strong credentials
+    And the user answers yes on the Check Vat Details page
     When the user enters Foo Ltd on the Registered Company Name page
     And the user answers no on the Has Trading Name page
     And the user answers no on the Part Of Vat Group page
@@ -37,6 +38,8 @@ Feature: Check Your Answers
     And the user answers yes on the Change Vat Registered In Eu page
     And the user selects Spain on the first Change Vat Registered Eu Member State page
     And the user adds ES123456789 on the first Change Eu Vat Number page
-    And the user answers no on the Change Add Additional Eu Vat Details page
-    Then the user is at the Check Your Answers page
+    And the user chooses no on the first Change Has Fixed Establishment page
+    And the user clicks continue on the first Check Eu Vat Details page
+    And the user answers no on the Add Additional Eu Vat Details page
+    #Then the user is at the Check Your Answers page
 
