@@ -87,4 +87,7 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def submitRegistration(): Unit =
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+
+  def clickContinue(): Unit =
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
 }

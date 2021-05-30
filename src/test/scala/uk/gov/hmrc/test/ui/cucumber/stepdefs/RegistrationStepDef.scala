@@ -54,6 +54,25 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.selectValueAutocomplete(data)
   }
 
+  When("""^the user chooses (yes|no) on the (first|second) (.*) page$""") {
+    (data: String, index: String, url: String) =>
+      index match {
+        case "first"  => CommonPage.checkUrl(url + "/1")
+        case "second" => CommonPage.checkUrl(url + "/2")
+        case _        => throw new Exception("Index doesn't exist")
+      }
+      CommonPage.selectAnswer(data)
+  }
+
+  When("""^the user clicks continue on the (first|second) (.*) page$""") { (index: String, url: String) =>
+    index match {
+      case "first"  => CommonPage.checkUrl(url + "/1")
+      case "second" => CommonPage.checkUrl(url + "/2")
+      case _        => throw new Exception("Index doesn't exist")
+    }
+    CommonPage.clickContinue()
+  }
+
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
     CommonPage.checkUrl(url)
     CommonPage.selectAnswer(data)
