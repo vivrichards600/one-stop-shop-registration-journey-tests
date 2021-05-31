@@ -26,6 +26,7 @@ Feature: Registering for One Stop Shop
     And the user chooses no on the second Has Fixed Establishment page
     And the user clicks continue on the second Check Eu Vat Details page
     And the user answers no on the Add Additional Eu Vat Details page
+    And the user answers no on the Currently Registered In Eu page
     And the user chooses Next Period on the Start Date page
     And the user completes details on the Business Address page
       | data         | fieldId    |
