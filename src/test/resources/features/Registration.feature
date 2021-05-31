@@ -13,7 +13,6 @@ Feature: Registering for One Stop Shop
     And the user adds Foo Two on the second Trading Name page
     And the user answers no on the Add Trading Name page
     And the user answers no on the Part Of Vat Group page
-    And the user enters GB987654321 on the Uk Vat Number page
     And the user provides date 01/01/2020 on the Uk Vat Effective Date page
     And the user enters ZZ11 9BB on the Uk Vat Registered Postcode page
     And the user answers yes on the Vat Registered In Eu page
