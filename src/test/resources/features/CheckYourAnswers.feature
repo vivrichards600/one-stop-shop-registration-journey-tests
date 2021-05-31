@@ -9,7 +9,6 @@ Feature: Check Your Answers
     When the user enters Foo Ltd on the Registered Company Name page
     And the user answers no on the Has Trading Name page
     And the user answers no on the Part Of Vat Group page
-    And the user enters GB987654321 on the Uk Vat Number page
     And the user provides date 01/01/2020 on the Uk Vat Effective Date page
     And the user enters ZZ11 9BB on the Uk Vat Registered Postcode page
     And the user answers no on the Vat Registered In Eu page
@@ -32,7 +31,6 @@ Feature: Check Your Answers
     And the user changes the answers on the Check Your Answers page
       | page                    | data        |
       | Registered Company Name | Company Ltd |
-      | Uk Vat Number           | GB987366554 |
     When the user is at the Check Your Answers page
     And the user selects the change button for Vat Registered In Eu
     And the user answers yes on the Change Vat Registered In Eu page
