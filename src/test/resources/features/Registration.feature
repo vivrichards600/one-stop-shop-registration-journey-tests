@@ -27,6 +27,10 @@ Feature: Registering for One Stop Shop
     And the user clicks continue on the second Check Eu Vat Details page
     And the user answers no on the Add Additional Eu Vat Details page
     And the user answers no on the Currently Registered In Eu page
+    And the user answers yes on the Previously Registered page
+    And the user selects Austria on the first Previous Eu Country page
+    And the user adds AT123 on the first Previous Eu Vat Number page
+    And the user answers no on the Add Previous Registration page
     And the user chooses Next Period on the Start Date page
     And the user completes details on the Business Address page
       | data         | fieldId    |
