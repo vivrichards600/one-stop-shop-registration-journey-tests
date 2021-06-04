@@ -4,7 +4,7 @@ Feature: Registering for One Stop Shop
   Scenario: A signed in user can register
     Given a user starts at the Is Business Based In Northern Ireland page
     And the user answers yes on the Is Business Based In Northern Ireland page
-    And the user signs in as an Organisation Admin with VAT enrolment 123456789 and strong credentials
+    And the user signs in as an Organisation Admin with VAT enrolment 000000002 and strong credentials
     And the user answers yes on the Check Vat Details page
     When the user enters Foo Ltd on the Registered Company Name page
     And the user answers yes on the Has Trading Name page
