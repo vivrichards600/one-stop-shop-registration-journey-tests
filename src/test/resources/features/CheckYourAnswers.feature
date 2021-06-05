@@ -4,13 +4,12 @@ Feature: Check Your Answers
   Scenario: Changing answers in Check Your Answers
     Given a user starts at the Is Business Based In Northern Ireland page
     And the user answers yes on the Is Business Based In Northern Ireland page
-    And the user signs in as an Organisation Admin with VAT enrolment 000000001 and strong credentials
+    And the user signs in as an Organisation Admin with VAT enrolment 900000001 and strong credentials
     And the user answers yes on the Check Vat Details page
     When the user enters Bar on the Registered Company Name page
     And the user answers no on the Has Trading Name page
     And the user answers no on the Part Of Vat Group page
     And the user provides date 01/01/2020 on the Uk Vat Effective Date page
-    And the user enters ZZ11 9BB on the Uk Vat Registered Postcode page
     And the user answers no on the Vat Registered In Eu page
     And the user answers no on the Previously Registered page
     And the user chooses Next Period on the Start Date page
