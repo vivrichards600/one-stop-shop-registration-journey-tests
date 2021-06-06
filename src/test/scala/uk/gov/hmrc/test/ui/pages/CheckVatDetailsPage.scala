@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.CommonPage
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-class NotBasedInNorthernIrelandStepDef extends BaseStepDef {
+object CheckVatDetailsPage extends BrowserDriver {
 
-  Then("""^the user is on the (.*) page$""") { (url: String) =>
-    CommonPage.checkUrl(url)
+  def selectYes(): Unit = {
+    driver.findElement(By.id("value_0")).click()
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 }
