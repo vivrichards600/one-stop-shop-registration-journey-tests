@@ -2,23 +2,25 @@
 Feature: Registering for One Stop Shop
 
   Scenario: A signed in user can register
-    Given a user starts at the Is Business Based In Northern Ireland page
-    And the user answers yes on the Is Business Based In Northern Ireland page
+    Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 000000002 and strong credentials
-    And the user answers yes on the Check Vat Details page
+    When the user answers yes on the Sells Goods From Ni page
+    And the user answers yes on the In Control Of Moving Goods page
+    And the user chooses Yes on the Check Vat Details page
     And the user answers yes on the Has Trading Name page
     And the user adds Foo on the first Trading Name page
     And the user answers yes on the Add Trading Name page
     And the user adds Foo Two on the second Trading Name page
     And the user answers no on the Add Trading Name page
-    And the user answers no on the Part Of Vat Group page
-    And the user answers yes on the Vat Registered In Eu page
+    And the user answers yes on the Tax Registered In Eu page
     And the user selects France on the first Vat Registered Eu Member State page
+    And the user chooses yes on the first Vat Registered In Eu page
     And the user adds FR123456789 on the first Eu Vat Number page
     And the user chooses no on the first Has Fixed Establishment page
     And the user clicks continue on the first Check Eu Vat Details page
     And the user answers yes on the Add Additional Eu Vat Details page
     And the user selects Germany on the second Vat Registered Eu Member State page
+    And the user chooses yes on the second Vat Registered In Eu page
     And the user adds DE123456789 on the second Eu Vat Number page
     And the user chooses no on the second Has Fixed Establishment page
     And the user clicks continue on the second Check Eu Vat Details page
@@ -29,6 +31,7 @@ Feature: Registering for One Stop Shop
     And the user adds AT123 on the first Previous Eu Vat Number page
     And the user answers no on the Add Previous Registration page
     And the user chooses Next Period on the Start Date page
+    And the user answers yes on the Has Website page
     And the user adds www.example.com on the first Website page
     And the user answers yes on the Add Website page
     And the user adds www.second-example.com on the second Website page
@@ -38,6 +41,11 @@ Feature: Registering for One Stop Shop
       | Joe Bloggs      | fullName        |
       | 01234567890     | telephoneNumber |
       | email@test.com  | emailAddress    |
+    And the user completes details on the Bank Details page
+      | data            | fieldId         |
+      | Account Name    | accountName     |
+      | 12345678        | bic             |
+      | GB12345678      | iban            |
     Then the user is at the Check Your Answers page
     Then the user submits their registration
 

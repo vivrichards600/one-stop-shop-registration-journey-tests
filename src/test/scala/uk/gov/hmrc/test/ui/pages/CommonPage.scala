@@ -38,9 +38,9 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkCYAUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(constructCYAUrl(url))
 
-  def getNonAuthUrl(url: String): Unit = {
+  def goToStartOfJourney(): Unit = {
     driver.manage().deleteAllCookies()
-    driver.navigate().to("http://localhost:10200/one-stop-shop-registration/" + constructUrl(url))
+    driver.navigate().to("http://localhost:10200/one-stop-shop-registration/")
   }
 
   def enterData(data: String): Unit = {

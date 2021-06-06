@@ -16,10 +16,14 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage, StartDatePage}
+import uk.gov.hmrc.test.ui.pages.{AuthPage, CheckVatDetailsPage, CommonPage, StartDatePage}
 import io.cucumber.datatable.DataTable
 
 class RegistrationStepDef extends BaseStepDef {
+
+  Given("^the user accesses the service$") { () =>
+    CommonPage.goToStartOfJourney()
+  }
 
   Given("a user is signed in") { () =>
     AuthPage.signIn()
@@ -104,5 +108,10 @@ class RegistrationStepDef extends BaseStepDef {
   When("""^the user chooses Next Period on the Start Date page$""") { () =>
     CommonPage.checkUrl("startDate")
     StartDatePage.selectNextPeriod()
+  }
+
+  When("""^the user chooses Yes on the Check Vat Details page$""") { () =>
+    CommonPage.checkUrl("checkVatDetails")
+    CheckVatDetailsPage.selectYes()
   }
 }
