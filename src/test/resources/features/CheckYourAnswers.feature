@@ -10,6 +10,7 @@ Feature: Check Your Answers
     When the user enters Bar on the Registered Company Name page
     And the user answers no on the Part Of Vat Group page
     And the user provides date 01/01/2020 on the Uk Vat Effective Date page
+    And the user answers yes on the Business Address In Uk page
     And the user completes details on the Business Address page
       | data         | fieldId    |
       | 1 The Street | line1      |

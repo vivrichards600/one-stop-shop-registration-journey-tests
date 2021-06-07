@@ -16,12 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import java.sql.Driver
-import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.By
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import org.scalatest.matchers.should.Matchers
 
 object AuthPage extends BasePage with BrowserDriver with Eventually {
 
