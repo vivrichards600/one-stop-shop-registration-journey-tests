@@ -1,4 +1,4 @@
-@Registration @ZAP @wip
+
 Feature: Check Your Answers
 
   Scenario: Changing answers in Check Your Answers
