@@ -110,8 +110,10 @@ class RegistrationStepDef extends BaseStepDef {
     StartDatePage.selectNextPeriod()
   }
 
-  When("""^the user chooses Yes on the Check Vat Details page$""") { () =>
-    CommonPage.checkUrl("checkVatDetails")
-    CheckVatDetailsPage.selectYes()
+  When("""^the user chooses (Yes|No, details incorrect|No, wrong account) on the (.*) page$""") {
+    (data: String, url: String) =>
+      CommonPage.checkUrl(url)
+      CheckVatDetailsPage.selectChoice(data)
+      CommonPage.clickContinue()
   }
 }

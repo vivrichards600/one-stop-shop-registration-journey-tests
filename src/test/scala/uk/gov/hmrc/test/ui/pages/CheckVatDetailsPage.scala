@@ -21,8 +21,10 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object CheckVatDetailsPage extends BrowserDriver {
 
-  def selectYes(): Unit = {
-    driver.findElement(By.id("value_0")).click()
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
-  }
+  def selectChoice(data: String): Unit =
+    data match {
+      case "Yes"                   => driver.findElement(By.id("value_0")).click()
+      case "No, details incorrect" => driver.findElement(By.id("value_1")).click()
+      case "No, wrong account"     => driver.findElement(By.id("value_2")).click()
+    }
 }
