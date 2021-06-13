@@ -7,12 +7,12 @@ Feature: Not Eligible for One Stop Shop
 
   Scenario: Business not selling goods from Northern Ireland
     And the user answers no on the Sells Goods From Ni page
-    Then the user is on the Cannot Register For Service page
+    Then the user is on the Not Selling Goods From Ni page
 
   Scenario: Business not in control of moving goods
     And the user answers yes on the Sells Goods From Ni page
     And the user answers no on the in Control Of Moving Goods page
-    Then the user is on the Cannot Register For Service page
+    Then the user is on the Not In Control Of Moving Goods page
 
   Scenario: Incorrect UK VAT details
     And the user answers yes on the Sells Goods From Ni page
