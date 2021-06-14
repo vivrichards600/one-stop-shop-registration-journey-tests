@@ -31,21 +31,21 @@ Feature: Registering for One Stop Shop
     And the user adds AT123 on the first Previous Eu Vat Number page
     And the user answers no on the Add Previous Registration page
     And the user chooses Next Period on the Start Date page
-    And the user answers yes on the Has Website page
-    And the user adds www.example.com on the first Website page
-    And the user answers yes on the Add Website page
-    And the user adds www.second-example.com on the second Website page
-    And the user answers no on the Add Website page
-    And the user completes details on the Business Contact Details page
+    And the user answers yes on the give-website-address page
+    And the user adds www.example.com on the first website-address page
+    And the user answers yes on the add-website-address page
+    And the user adds www.second-example.com on the second website-address page
+    And the user answers no on the add-website-address page
+    And the user completes details on the business-contact-details page
       | data            | fieldId         |
       | Joe Bloggs      | fullName        |
       | 01234567890     | telephoneNumber |
       | email@test.com  | emailAddress    |
-    And the user completes details on the Bank Details page
+    And the user completes details on the bank-details page
       | data            | fieldId         |
       | Account Name    | accountName     |
       | 12345678        | bic             |
       | GB12345678      | iban            |
-    Then the user is at the Check Your Answers page
+    Then the user is at the check-answers page
     Then the user submits their registration
 

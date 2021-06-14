@@ -22,18 +22,18 @@ Feature: Check Your Answers
     And the user answers no on the Tax Registered In Eu page
     And the user answers no on the Previously Registered page
     And the user chooses Next Period on the Start Date page
-    And the user answers no on the Has Website page
-    And the user completes details on the Business Contact Details page
+    And the user answers no on the give-website-address page
+    And the user completes details on the business-contact-details page
       | data            | fieldId         |
       | Joe Bloggs      | fullName        |
       | 01234567890     | telephoneNumber |
       | email@test.com  | emailAddress    |
-    And the user completes details on the Bank Details page
+    And the user completes details on the bank-details page
       | data            | fieldId         |
       | Account Name    | accountName     |
       | 12345678        | bic             |
       | GB12345678      | iban            |
-    Then the user is at the Check Your Answers page
+    Then the user is at the check-answers page
     And the user changes the answers on the Check Your Answers page
       | page                    | data        |
       | Registered Company Name | Company Ltd |
