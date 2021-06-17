@@ -6,22 +6,22 @@ Feature: Not Eligible for One Stop Shop
     And the user signs in as an Organisation Admin with VAT enrolment 100000001 and strong credentials
 
   Scenario: Business not selling goods from Northern Ireland
-    And the user answers no on the Sells Goods From Ni page
-    Then the user is on the Not Selling Goods From Ni page
+    And the user answers no on the sell-online page
+    Then the user is on the do-not-sell-online page
 
   Scenario: Business not in control of moving goods
-    And the user answers yes on the Sells Goods From Ni page
-    And the user answers no on the in Control Of Moving Goods page
-    Then the user is on the Not In Control Of Moving Goods page
+    And the user answers yes on the sell-online page
+    And the user answers no on the move-goods page
+    Then the user is on the do-not-move-goods page
 
   Scenario: Incorrect UK VAT details
-    And the user answers yes on the Sells Goods From Ni page
-    And the user answers yes on the in Control Of Moving Goods page
-    And the user chooses No, details incorrect on the Check Vat Details page
-    Then the user is on the Update Vat Details page
+    And the user answers yes on the sell-online page
+    And the user answers yes on the move-goods page
+    And the user chooses No, details incorrect on the confirm-vat-details page
+    Then the user is on the update-vat-details page
 
   Scenario: Use different UK VAT details
-    And the user answers yes on the Sells Goods From Ni page
-    And the user answers yes on the in Control Of Moving Goods page
-    And the user chooses No, wrong account on the Check Vat Details page
-    Then the user is on the Use Other Account page
+    And the user answers yes on the sell-online page
+    And the user answers yes on the move-goods page
+    And the user chooses No, wrong account on the confirm-vat-details page
+    Then the user is on the register-different-business page

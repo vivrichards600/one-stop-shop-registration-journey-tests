@@ -106,7 +106,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""^the user chooses Next Period on the Start Date page$""") { () =>
-    CommonPage.checkUrl("startDate")
+    CommonPage.checkUrl("start-date")
     StartDatePage.selectNextPeriod()
   }
 
