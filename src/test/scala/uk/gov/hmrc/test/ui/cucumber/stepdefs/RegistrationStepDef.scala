@@ -102,11 +102,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   Then("""^the user submits their registration$""") { () =>
     CommonPage.submitRegistration()
-    CommonPage.checkUrl("applicationComplete")
+    CommonPage.checkUrl("successful")
   }
 
   When("""^the user chooses Next Period on the Start Date page$""") { () =>
-    CommonPage.checkUrl("startDate")
+    CommonPage.checkUrl("start-date")
     StartDatePage.selectNextPeriod()
   }
 
