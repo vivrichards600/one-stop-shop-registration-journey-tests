@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AuthPage, CheckVatDetailsPage, CommonPage, StartDatePage}
+import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage}
 import io.cucumber.datatable.DataTable
 
 class RegistrationStepDef extends BaseStepDef {
@@ -77,6 +77,11 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.clickContinue()
   }
 
+  When("^the user clicks through the (.*) page$") { (url: String) =>
+    CommonPage.checkUrl(url)
+    CommonPage.clickContinue()
+  }
+
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
     CommonPage.checkUrl(url)
     CommonPage.selectAnswer(data)
@@ -105,9 +110,9 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.checkUrl("successful")
   }
 
-  When("""^the user chooses Next Period on the Start Date page$""") { () =>
-    CommonPage.checkUrl("start-date")
-    StartDatePage.selectNextPeriod()
+  When("^the user chooses No on the Already Made Sales page$") { () =>
+    CommonPage.checkUrl("alreadyMadeSales")
+    AlreadyMadeSalesPage.selectNo()
   }
 
   When("""^the user chooses (Yes|No, details incorrect|No, wrong account) on the (.*) page$""") {
