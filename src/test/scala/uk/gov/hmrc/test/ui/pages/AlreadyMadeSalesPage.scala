@@ -19,10 +19,10 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-object StartDatePage extends BrowserDriver {
+object AlreadyMadeSalesPage extends BrowserDriver {
 
-  def selectNextPeriod(): Unit = {
-    driver.findElement(By.id("value_0")).click()
+  def selectNo(): Unit = {
+    driver.findElement(By.id("value_1")).click()
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 }
