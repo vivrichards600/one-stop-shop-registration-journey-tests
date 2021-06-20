@@ -44,10 +44,10 @@ Feature: Check Your Answers
       | 01234567890     | telephoneNumber |
       | email@test.com  | emailAddress    |
     And the user completes details on the bank-details page
-      | data            | fieldId         |
-      | Account Name    | accountName     |
-      | 12345678        | bic             |
-      | GB12345678      | iban            |
+      | data                    | fieldId         |
+      | Account Name            | accountName     |
+      | ABCDEF2A                | bic             |
+      | GB33BUKB20201555555555  | iban            |
     Then the user is at the check-answers page
     #Expand Check your Answers journey
 
