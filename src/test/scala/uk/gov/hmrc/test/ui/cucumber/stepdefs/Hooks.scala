@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl, Scenario}
 import org.openqa.selenium.{OutputType, TakesScreenshot}
+import uk.gov.hmrc.test.ui.cucumber.utils.MongoConnection
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 class Hooks extends ScalaDsl with EN with BrowserDriver {
@@ -27,5 +28,9 @@ class Hooks extends ScalaDsl with EN with BrowserDriver {
       val screenshot     = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.BYTES)
       scenario.attach(screenshot, "image/png", screenshotName)
     }
+  }
+
+  Before {
+    MongoConnection.dropMongoCollection("one-stop-shop-registration", "registrations")
   }
 }

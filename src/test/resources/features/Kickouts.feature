@@ -1,4 +1,4 @@
-@Registration @wip
+@Registration
 Feature: Not Eligible for One Stop Shop
 
   Background:
