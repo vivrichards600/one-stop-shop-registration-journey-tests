@@ -1,4 +1,4 @@
-
+@wip
 Feature: Check Your Answers
 
   Scenario: Changing answers in Check Your Answers
@@ -11,33 +11,10 @@ Feature: Check Your Answers
     And the user answers yes on the intendToSellGoodsThisQuarter page
     And the user clicks through the commencementDate page
     And the user chooses Yes on the confirm-vat-details page
-    And the user answers yes on the have-uk-trading-name page
-    And the user adds Foo on the first uk-trading-name page
-    And the user answers yes on the add-uk-trading-name page
-    And the user adds Foo Two on the second uk-trading-name page
-    And the user answers no on the add-uk-trading-name page
-    And the user answers yes on the tax-in-eu page
-    And the user selects France on the first eu-tax page
-    And the user chooses yes on the first eu-vat page
-    And the user adds FR123456789 on the first eu-vat-number page
-    And the user chooses no on the first eu-fixed-establishment page
-    And the user clicks continue on the first check-tax-details page
-    And the user answers yes on the add-tax-details page
-    And the user selects Germany on the second eu-tax page
-    And the user chooses yes on the second eu-vat page
-    And the user adds DE123456789 on the second eu-vat-number page
-    And the user chooses no on the second eu-fixed-establishment page
-    And the user clicks continue on the second check-tax-details page
-    And the user answers no on the add-tax-details page
-    And the user answers yes on the deregistered page
-    And the user selects Austria on the first deregistered-country page
-    And the user adds AT123 on the first deregistered-eu-vat-number page
-    And the user answers no on the add-deregistration page
-    And the user answers yes on the give-website-address page
-    And the user adds www.example.com on the first website-address page
-    And the user answers yes on the add-website-address page
-    And the user adds www.second-example.com on the second website-address page
-    And the user answers no on the add-website-address page
+    And the user answers no on the have-uk-trading-name page
+    And the user answers no on the tax-in-eu page
+    And the user answers no on the deregistered page
+    And the user answers no on the give-website-address page
     And the user completes details on the business-contact-details page
       | data            | fieldId         |
       | Joe Bloggs      | fullName        |
@@ -49,5 +26,39 @@ Feature: Check Your Answers
       | ABCDEF2A                | bic             |
       | GB33BUKB20201555555555  | iban            |
     Then the user is at the check-answers page
-    #Expand Check your Answers journey
+    #Go back and change trading name once this is fixed
+#    And the user adds Foo on the first uk-trading-name page
+#    And the user answers yes on the add-uk-trading-name page
+#    And the user adds Foo Two on the second uk-trading-name page
+#    And the user answers no on the add-uk-trading-name page
+#  /changeVatRegisteredEuMemberState/1/checking-answers needs to be changed
+#    Then the user selects the change button for check-tax-in-eu
+#    And the user answers yes on the check-tax-in-eu page
+#    And the user selects France on the first eu-tax page
+#    And the user chooses yes on the first eu-vat page
+#    And the user adds FR123456789 on the first eu-vat-number page
+#    And the user chooses no on the first eu-fixed-establishment page
+#    And the user clicks continue on the first check-tax-details page
+#    And the user answers yes on the add-tax-details page
+#    And the user selects Germany on the second eu-tax page
+#    And the user chooses yes on the second eu-vat page
+#    And the user adds DE123456789 on the second eu-vat-number page
+#    And the user chooses no on the second eu-fixed-establishment page
+#    And the user clicks continue on the second check-tax-details page
+#    And the user answers no on the add-tax-details page
+#    Do two countries and use the mini CYA option for one of them
+    Then the user selects the change button for check-deregistered
+    And the user answers yes on the check-deregistered page
+    And the user selects Austria on the first check-deregistered-country page
+    And the user adds AT123 on the first check-deregistered-eu-vat-number page
+    And the user answers no on the check-add-deregistration page
+    Then the user is at the check-answers page
+    Then the user selects the change button for check-give-website-address
+    And the user answers yes on the check-give-website-address page
+    And the user adds www.example.com on the first check-website-address page
+    And the user answers yes on the check-add-website-address page
+    And the user adds www.second-example.com on the second check-website-address page
+#    Add in a delete option
+    And the user answers no on the add-website-address page
+    Then the user is at the check-answers page
 
