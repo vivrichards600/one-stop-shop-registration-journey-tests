@@ -40,7 +40,7 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def goToStartOfJourney(): Unit = {
     driver.manage().deleteAllCookies()
-    driver.navigate().to("http://localhost:10200/one-stop-shop-registration/")
+    driver.navigate().to("http://localhost:10200/pay-vat-on-goods-sold-to-eu/northern-ireland-register/")
   }
 
   def enterData(data: String): Unit = {
