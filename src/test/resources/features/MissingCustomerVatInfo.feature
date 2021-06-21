@@ -1,6 +1,5 @@
 @Registration
 Feature: Not all customer VAT details retrieved from DES
-
   Scenario: Missing Customer Vat Info from UK VAT details
     Given the user accesses the service
     And the user answers no on the already-eu-registered page
