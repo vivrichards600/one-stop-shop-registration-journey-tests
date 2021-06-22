@@ -58,7 +58,8 @@ Feature: Check Your Answers
     And the user adds www.example.com on the first check-website-address page
     And the user answers yes on the check-add-website-address page
     And the user adds www.second-example.com on the second check-website-address page
-#    Add in a delete option
-    And the user answers no on the add-website-address page
+    And the user selects the remove button for check-remove-website-address\/2
+    Then the user answers yes on the check-remove-website-address/2 page
+    And the user answers no on the check-add-website-address page
     Then the user is at the check-answers page
 
