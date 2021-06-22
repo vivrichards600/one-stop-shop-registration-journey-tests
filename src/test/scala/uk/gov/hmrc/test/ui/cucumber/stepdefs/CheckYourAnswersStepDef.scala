@@ -21,10 +21,6 @@ import uk.gov.hmrc.test.ui.pages.{AuthPage, CheckYourAnswersPage, CommonPage}
 
 class CheckYourAnswersStepDef extends BaseStepDef {
 
-  When("""^the user changes the answers on the Check Your Answers page$""") { (dataTable: DataTable) =>
-    CheckYourAnswersPage.changeAnswers(dataTable)
-  }
-
   Then("""^the user selects the (change|remove) link for (.*)$""") { (linkType: String, link: String) =>
     CheckYourAnswersPage.selectLink(link)
   }

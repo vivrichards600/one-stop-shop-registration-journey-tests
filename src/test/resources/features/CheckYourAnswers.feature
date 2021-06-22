@@ -1,4 +1,4 @@
-@wip
+@Registration
 Feature: Check Your Answers
 
   Scenario: Changing answers in Check Your Answers
@@ -26,12 +26,13 @@ Feature: Check Your Answers
       | ABCDEF2A               | bic         |
       | GB33BUKB20201555555555 | iban        |
     Then the user is at the check-answers page
-    #Go back and change trading name once this is fixed
-#    And the user adds Foo on the first uk-trading-name page
-#    And the user answers yes on the add-uk-trading-name page
-#    And the user adds Foo Two on the second uk-trading-name page
-#    And the user answers no on the add-uk-trading-name page
-#  /changeVatRegisteredEuMemberState/1/checking-answers needs to be changed
+    Then the user selects the change link for check-have-uk-trading-name
+    And the user answers yes on the check-have-uk-trading-name page
+    And the user adds Foo on the first check-uk-trading-name page
+    And the user answers yes on the check-add-uk-trading-name page
+    And the user adds Foo Two on the second check-uk-trading-name page
+    And the user answers no on the check-add-uk-trading-name page
+    Then the user is at the check-answers page
     Then the user selects the change link for check-tax-in-eu
     And the user answers yes on the check-tax-in-eu page
     And the user selects France on the first check-eu-tax page

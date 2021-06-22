@@ -31,6 +31,7 @@ class Hooks extends ScalaDsl with EN with BrowserDriver {
   }
 
   Before {
+    driver.manage().deleteAllCookies()
     MongoConnection.dropMongoCollection("one-stop-shop-registration", "registrations")
   }
 }
