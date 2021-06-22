@@ -102,7 +102,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   Then("""^the user is at the (.*) page$""") { (url: String) =>
-    CommonPage.checkCYAUrl(url)
+    CommonPage.checkUrl(url)
   }
 
   Then("""^the user submits their registration$""") { () =>

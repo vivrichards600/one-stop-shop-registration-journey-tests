@@ -26,22 +26,11 @@ import scala.collection.JavaConverters._
 
 object CommonPage extends BrowserDriver with Matchers {
 
-  def constructUrl(prettyUrl: String): String =
-    (prettyUrl.head.toLower + prettyUrl.tail).replace(" ", "")
-
-  def constructCYAUrl(prettyUrl: String): String =
-    prettyUrl.toLowerCase.replace(" ", "-")
-
   def checkUrl(url: String): Unit =
-    driver.getCurrentUrl should endWith(constructUrl(url))
+    driver.getCurrentUrl should endWith(url)
 
-  def checkCYAUrl(url: String): Unit =
-    driver.getCurrentUrl should endWith(constructCYAUrl(url))
-
-  def goToStartOfJourney(): Unit = {
-    driver.manage().deleteAllCookies()
+  def goToStartOfJourney(): Unit =
     driver.navigate().to("http://localhost:10200/pay-vat-on-goods-sold-to-eu/northern-ireland-register/")
-  }
 
   def enterData(data: String): Unit = {
     val inputId = "value"
