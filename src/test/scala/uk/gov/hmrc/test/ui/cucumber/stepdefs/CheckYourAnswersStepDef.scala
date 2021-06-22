@@ -25,7 +25,7 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.changeAnswers(dataTable)
   }
 
-  Then("""^the user selects the (change|remove) button for (.*)$""") { (linkType: String, link: String) =>
+  Then("""^the user selects the (change|remove) link for (.*)$""") { (linkType: String, link: String) =>
     CheckYourAnswersPage.selectLink(link)
   }
 }
