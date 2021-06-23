@@ -3,18 +3,16 @@ Feature: Registering for One Stop Shop
   Scenario: A signed in user can register
     Given the user accesses the service
     And the user answers no on the already-eu-registered page
-    And the user signs in as an Organisation Admin with VAT enrolment 000000002 and strong credentials
-    When the user answers yes on the sell-online page
+    And the user answers yes on the sell-from-northern-ireland page
     And the user answers yes on the move-goods page
-    And the user chooses No on the Already Made Sales page
-    And the user answers yes on the intendToSellGoodsThisQuarter page
-    And the user clicks through the commencementDate page
+    And the user signs in as an Organisation Admin with VAT enrolment 100000001 and strong credentials
     And the user chooses Yes on the confirm-vat-details page
     And the user answers yes on the have-uk-trading-name page
     And the user adds Foo on the first uk-trading-name page
     And the user answers yes on the add-uk-trading-name page
     And the user adds Foo Two on the second uk-trading-name page
     And the user answers no on the add-uk-trading-name page
+    And the user clicks through the start-date page
     And the user answers yes on the tax-in-eu page
     And the user selects France on the first eu-tax page
     And the user chooses yes on the first eu-vat page
@@ -32,6 +30,7 @@ Feature: Registering for One Stop Shop
     And the user selects Austria on the first deregistered-country page
     And the user adds AT123 on the first deregistered-eu-vat-number page
     And the user answers no on the add-deregistration page
+    And the user answers no on the online-marketplace page
     And the user answers yes on the give-website-address page
     And the user adds www.example.com on the first website-address page
     And the user answers yes on the add-website-address page

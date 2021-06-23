@@ -4,16 +4,15 @@ Feature: Check Your Answers
   Scenario: Changing answers in Check Your Answers
     Given the user accesses the service
     And the user answers no on the already-eu-registered page
-    And the user signs in as an Organisation Admin with VAT enrolment 000000001 and strong credentials
-    When the user answers yes on the sell-online page
+    And the user answers yes on the sell-from-northern-ireland page
     And the user answers yes on the move-goods page
-    And the user chooses No on the Already Made Sales page
-    And the user answers yes on the intendToSellGoodsThisQuarter page
-    And the user clicks through the commencementDate page
+    And the user signs in as an Organisation Admin with VAT enrolment 100000001 and strong credentials
     And the user chooses Yes on the confirm-vat-details page
     And the user answers no on the have-uk-trading-name page
+    And the user clicks through the start-date page
     And the user answers no on the tax-in-eu page
     And the user answers no on the deregistered page
+    And the user answers no on the online-marketplace page
     And the user answers no on the give-website-address page
     And the user completes details on the business-contact-details page
       | data           | fieldId         |
