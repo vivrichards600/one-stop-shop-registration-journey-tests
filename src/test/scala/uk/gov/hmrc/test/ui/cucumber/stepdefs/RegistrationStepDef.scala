@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage}
+import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage, SalesChannelsPage}
 import io.cucumber.datatable.DataTable
 
 class RegistrationStepDef extends BaseStepDef {
@@ -119,6 +119,13 @@ class RegistrationStepDef extends BaseStepDef {
     (data: String, url: String) =>
       CommonPage.checkUrl(url)
       CheckVatDetailsPage.selectChoice(data)
+      CommonPage.clickContinue()
+  }
+
+  When("""^the user picks (Online Marketplace|Mixed|Not Online Marketplace) on the how-do-you-sell page$""") {
+    answer: String =>
+      CommonPage.checkUrl("how-do-you-sell")
+      SalesChannelsPage.selectChoice(answer)
       CommonPage.clickContinue()
   }
 }
