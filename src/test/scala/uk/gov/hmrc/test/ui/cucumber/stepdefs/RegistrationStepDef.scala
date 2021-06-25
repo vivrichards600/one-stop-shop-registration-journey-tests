@@ -122,9 +122,9 @@ class RegistrationStepDef extends BaseStepDef {
       CommonPage.clickContinue()
   }
 
-  When("""^the user picks (Online Marketplace|Mixed|Not Online Marketplace) on the how-do-you-sell page$""") {
+  When("""^the user picks (Online Marketplace|Mixed|Not Online Marketplace) on the sales-on-marketplaces page$""") {
     answer: String =>
-      CommonPage.checkUrl("how-do-you-sell")
+      CommonPage.checkUrl("sales-on-marketplaces")
       SalesChannelsPage.selectChoice(answer)
       CommonPage.clickContinue()
   }
