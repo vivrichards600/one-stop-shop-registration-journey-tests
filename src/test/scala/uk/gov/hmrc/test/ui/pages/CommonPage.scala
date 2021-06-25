@@ -21,6 +21,7 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import io.cucumber.datatable.DataTable
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 import scala.collection.JavaConverters._
 
@@ -29,8 +30,9 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
 
+  val url = TestConfiguration.url("one-stop-shop-registration-frontend")
   def goToStartOfJourney(): Unit =
-    driver.navigate().to("http://localhost:10200/pay-vat-on-goods-sold-to-eu/northern-ireland-register/")
+    driver.navigate().to(url)
 
   def enterData(data: String): Unit = {
     val inputId = "value"
@@ -71,12 +73,32 @@ object CommonPage extends BrowserDriver with Matchers {
     dataTable.asMaps[String, String](classOf[String], classOf[String]).asScala.foreach { row =>
       driver.findElement(By.id(row.get("fieldId"))).sendKeys(row.get("data"))
     }
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    driver.findElement(By.cssSelector(".govuk-button")).click()
   }
 
   def submitRegistration(): Unit =
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    driver.findElement(continueButton).click()
 
   def clickContinue(): Unit =
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    driver.findElement(continueButton).click()
+
+//  def registerButton: By = By.xpath("//*[@id='main-content']/div/div/form/button")
+//  def continueButton: By = By.xpath("//*[@id='main-content']/div/div/form/button")
+  def continueButton: By = By.cssSelector(".govuk-button")
+
+
+  def businessResponsibleReportingPayingVATEUCountries(): Unit ={
+    checkUrl("already-eu-registered")
+    selectAnswer("no")
+
+    checkUrl("sell-from-northern-ireland")
+    selectAnswer("yes")
+
+    checkUrl("ni-business")
+    selectAnswer("yes")
+
+    checkUrl("business-pay")
+    clickContinue()
+  }
+
 }
