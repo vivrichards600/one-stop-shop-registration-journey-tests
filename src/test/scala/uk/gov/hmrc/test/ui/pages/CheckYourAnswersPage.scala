@@ -37,4 +37,10 @@ object CheckYourAnswersPage extends BrowserDriver with Matchers {
 
   def selectLink(link: String): Unit =
     driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
+
+  def changeUkTradingName(): Unit = selectLink("check-have-uk-trading-name")
+
+  def changeTaxInEu(): Unit = selectLink("check-tax-in-eu")
+
+  def giveWebsiteAddress(): Unit = selectLink("check-give-website-address")
 }

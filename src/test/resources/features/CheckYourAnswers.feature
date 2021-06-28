@@ -25,10 +25,10 @@ Feature: Check Your Answers
       | ABCDEF2A               | bic         |
       | GB33BUKB20201555555555 | iban        |
     Then the user is at the check-answers page
-    Then the user selects the change link for check-have-uk-trading-name
+    Then the user changes the uk-trading-name
     And the user adds 2 trading names
     Then the user is at the check-answers page
-    Then the user selects the change link for check-tax-in-eu
+    Then the user changes the tax in EU option
     And the user answers yes on the check-tax-in-eu page
     And the user adds a "first" business "without an establishment" in "France" registered for tax in the EU
     And the user clicks continue on the first change-check-tax-details page

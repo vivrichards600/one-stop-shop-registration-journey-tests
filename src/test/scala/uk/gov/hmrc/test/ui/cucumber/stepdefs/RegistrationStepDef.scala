@@ -109,7 +109,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("the user adds {int} website addresses") {(numberOfWebsites: Int)  =>
     CommonPage.checkUrl("check-answers")
-    CheckYourAnswersPage.selectLink("check-give-website-address")
+    CheckYourAnswersPage.giveWebsiteAddress()
 
     CommonPage.checkUrl("check-give-website-address")
     CommonPage.selectAnswer("yes")

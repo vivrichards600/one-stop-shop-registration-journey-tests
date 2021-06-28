@@ -94,7 +94,7 @@ object CommonPage extends BrowserDriver with Matchers {
     checkUrl("sell-from-northern-ireland")
     selectAnswer("yes")
 
-    checkUrl("ni-business")
+    checkUrl("northern-ireland-business")
     selectAnswer("yes")
 
     checkUrl("business-pay")

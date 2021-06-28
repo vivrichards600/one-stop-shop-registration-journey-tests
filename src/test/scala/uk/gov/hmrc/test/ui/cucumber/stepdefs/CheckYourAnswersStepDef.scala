@@ -24,4 +24,12 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   Then("""^the user selects the (change|remove) link for (.*)$""") { (linkType: String, link: String) =>
     CheckYourAnswersPage.selectLink(link)
   }
+
+  Then("the user changes the uk-trading-name") {() =>
+    CheckYourAnswersPage.changeUkTradingName()
+  }
+
+  Then("the user changes the tax in EU option") {() =>
+    CheckYourAnswersPage.changeTaxInEu()
+  }
 }
