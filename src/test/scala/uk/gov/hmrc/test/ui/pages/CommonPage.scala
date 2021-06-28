@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import io.cucumber.datatable.DataTable
@@ -30,7 +30,7 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
 
-  val url = TestConfiguration.url("one-stop-shop-registration-frontend")
+  val url: String                = TestConfiguration.url("one-stop-shop-registration-frontend")
   def goToStartOfJourney(): Unit =
     driver.navigate().to(url)
 
@@ -40,7 +40,7 @@ object CommonPage extends BrowserDriver with Matchers {
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 
-  def waitForElement(by: By) =
+  def waitForElement(by: By): WebElement =
     new WebDriverWait(driver, 3).until {
       ExpectedConditions.presenceOfElementLocated(by)
     }
@@ -82,12 +82,9 @@ object CommonPage extends BrowserDriver with Matchers {
   def clickContinue(): Unit =
     driver.findElement(continueButton).click()
 
-//  def registerButton: By = By.xpath("//*[@id='main-content']/div/div/form/button")
-//  def continueButton: By = By.xpath("//*[@id='main-content']/div/div/form/button")
   def continueButton: By = By.cssSelector(".govuk-button")
 
-
-  def businessResponsibleReportingPayingVATEUCountries(): Unit ={
+  def businessResponsibleReportingPayingVATEUCountries(): Unit = {
     checkUrl("already-eu-registered")
     selectAnswer("no")
 

@@ -25,11 +25,11 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.selectLink(link)
   }
 
-  Then("the user changes the uk-trading-name") {() =>
+  Then("the user changes the uk-trading-name") { () =>
     CheckYourAnswersPage.changeUkTradingName()
   }
 
-  Then("the user changes the tax in EU option") {() =>
+  Then("the user changes the tax in EU option") { () =>
     CheckYourAnswersPage.changeTaxInEu()
   }
 }
