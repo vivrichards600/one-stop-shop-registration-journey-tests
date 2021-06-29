@@ -37,7 +37,7 @@ Feature: Check Your Answers
     And the user changes the second business to VAT not registered
     And the user adds de-registration details from check your answers page
     And the user adds 2 website addresses
-    And the user removes website address 2
+    And the user removes website address 2 and continues to check your answers page
 
 
 

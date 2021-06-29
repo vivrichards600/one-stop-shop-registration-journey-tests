@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.datatable.DataTable
 import org.scalatestplus.selenium.Chrome.textField
+import uk.gov.hmrc.test.ui.pages.CommonPage.selectLink
 import uk.gov.hmrc.test.ui.pages._
 
 import scala.jdk.CollectionConverters.asScalaBufferConverter
@@ -94,30 +95,23 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.selectAnswer(data)
   }
 
-  And("the user removes website address {int}") { (index: Int) =>
-    CommonPage.checkUrl("check-add-website-address")
-    CheckYourAnswersPage.selectLink(s"check-remove-website-address\\/$index")
-
-    CommonPage.checkUrl(s"check-remove-website-address/$index")
-    CommonPage.selectAnswer("yes")
-
-    CommonPage.checkUrl("check-add-website-address")
-    CommonPage.selectAnswer("no")
-
-    CommonPage.checkUrl("check-answers")
+  And("the user removes website address {int} and continues to check your answers page") { (index: Int) =>
+    WebsiteAddressesPage
+      .removeWebsiteAddress(index)
+      .chooseToNotAddAnotherWebsiteAddress()
   }
 
   And("the user adds 2 website addresses") { () =>
     CheckYourAnswersPage.giveWebsiteAddress()
       .addWebsiteAddress("www.example1.com")
-      .addAnotherAddress()
+      .addAnotherWebsiteAddress()
       .addWebsiteAddress("www.example2.com")
       .addressCount shouldBe 2
   }
 
   And("the user adds de-registration details from check your answers page") { () =>
     CommonPage.checkUrl("check-answers")
-    CheckYourAnswersPage.selectLink("check-deregistered")
+    selectLink("check-deregistered")
 
     CommonPage.checkUrl("check-deregistered")
     CommonPage.selectAnswer("yes")
@@ -135,7 +129,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   And("the user changes the second business to VAT not registered") { () =>
-    CheckYourAnswersPage.selectLink("check-eu-vat\\/2")
+    CommonPage.selectLink("check-eu-vat\\/2")
 
     CommonPage.checkUrl("check-eu-vat/2")
     CommonPage.selectAnswer("no")

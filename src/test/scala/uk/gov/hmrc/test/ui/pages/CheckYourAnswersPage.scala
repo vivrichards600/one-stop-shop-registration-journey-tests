@@ -20,6 +20,7 @@ import io.cucumber.datatable.DataTable
 import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.pages.CommonPage.selectLink
 
 import scala.collection.JavaConverters._
 
@@ -34,9 +35,6 @@ object CheckYourAnswersPage extends BrowserDriver with Matchers {
       driver.findElement(By.id("value")).sendKeys(row.get("data"))
       driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
     }
-
-  def selectLink(link: String): Unit =
-    driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
 
   def changeUkTradingName(): Unit = selectLink("check-have-uk-trading-name")
 

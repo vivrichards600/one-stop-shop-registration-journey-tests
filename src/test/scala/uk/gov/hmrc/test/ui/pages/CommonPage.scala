@@ -53,6 +53,9 @@ object CommonPage extends BrowserDriver with Matchers {
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 
+  def selectLink(link: String): Unit =
+    driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
+
   def provideDate(date: String): Unit = {
     driver.findElement(By.id("value.day")).sendKeys(date.substring(0, 2))
     driver.findElement(By.id("value.month")).sendKeys(date.substring(3, 5))
