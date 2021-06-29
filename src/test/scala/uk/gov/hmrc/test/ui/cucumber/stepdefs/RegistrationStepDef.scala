@@ -189,6 +189,10 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.completeForm(dataTable)
   }
 
+  When("""^the user provides bank-details and continues to check-answers page$""") { () =>
+    BankDetailsPage.addBankDetails()
+  }
+
   Then("""^the user is at the (.*) page$""") { (url: String) =>
     CommonPage.checkUrl(url)
   }

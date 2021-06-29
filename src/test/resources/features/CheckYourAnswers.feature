@@ -19,12 +19,7 @@ Feature: Check Your Answers
       | Joe Bloggs     | fullName        |
       | 01234567890    | telephoneNumber |
       | email@test.com | emailAddress    |
-    And the user completes details on the bank-details page
-      | data                   | fieldId     |
-      | Account Name           | accountName |
-      | ABCDEF2A               | bic         |
-      | GB33BUKB20201555555555 | iban        |
-    Then the user is at the check-answers page
+    And the user provides bank-details and continues to check-answers page
     Then the user changes the uk-trading-name
     And the user adds 2 trading names
     Then the user is at the check-answers page
