@@ -17,8 +17,7 @@ Feature: Check Your Answers
     And the user provides business-contact-details
     And the user provides bank-details and continues to check-answers page
     Then the user changes the uk-trading-name
-    And the user adds 2 trading names
-    Then the user is at the check-answers page
+    And the user adds 2 trading names and continues to check-answers page
     Then the user changes the tax in EU option
     And the user answers yes on the check-tax-in-eu page
     And the user adds a "first" business "without an establishment" in "France" registered for tax in the EU

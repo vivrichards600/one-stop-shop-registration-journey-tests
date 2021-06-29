@@ -8,7 +8,7 @@ import scala.jdk.CollectionConverters.asScalaBufferConverter
 
 object WebsiteAddressesPage extends BrowserDriver{
 
-  def addressCount: Int = driver.findElements(By.className("hmrc-add-to-a-list__identifier")).asScala.toList.size
+  def websiteAddressCount: Int = driver.findElements(By.className("hmrc-add-to-a-list__identifier")).asScala.toList.size
 
   def addAnotherWebsiteAddress(): WebsiteAddressesPage.type = {
     CommonPage.selectAnswer("yes")

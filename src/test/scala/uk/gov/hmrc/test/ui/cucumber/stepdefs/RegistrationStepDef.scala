@@ -107,7 +107,7 @@ class RegistrationStepDef extends BaseStepDef {
       .addWebsiteAddress("www.example1.com")
       .addAnotherWebsiteAddress()
       .addWebsiteAddress("www.example2.com")
-      .addressCount shouldBe 2
+      .websiteAddressCount shouldBe 2
   }
 
   And("the user adds de-registration details from check your answers page") { () =>
@@ -147,20 +147,13 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.checkUrl("check-answers")
   }
 
-  And("the user adds {int} trading names") { (numberOfTradingNames: Int) =>
-    CommonPage.checkUrl("check-have-uk-trading-name")
-    CommonPage.selectAnswer("yes")
-
-    for (i <- 1 to numberOfTradingNames) {
-      CommonPage.checkUrl(s"check-uk-trading-name/$i")
-      CommonPage.enterData(s"Foo $i")
-
-      if (i != numberOfTradingNames) {
-        CommonPage.selectAnswer("yes")
-      } else {
-        CommonPage.selectAnswer("no")
-      }
-    }
+  And("the user adds 2 trading names and continues to check-answers page") { () =>
+    TradingNamesPage.hasDifferentTradingName
+      .addTradingName("Foo One")
+      .addAnotherTradingName()
+      .addTradingName("Foo Two")
+      .tradingNameCount shouldBe 2
+    TradingNamesPage.chooseToNotAddAnotherTradingName()
   }
 
   When("""^the user provides the business details$""") { (dataTable: DataTable) =>
