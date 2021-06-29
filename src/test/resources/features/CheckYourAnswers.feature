@@ -14,11 +14,7 @@ Feature: Check Your Answers
      | deregistered         | no       |
      | online-marketplace   | no       |
      | give-website-address | no       |
-    And the user completes details on the business-contact-details page
-      | data           | fieldId         |
-      | Joe Bloggs     | fullName        |
-      | 01234567890    | telephoneNumber |
-      | email@test.com | emailAddress    |
+    And the user provides business-contact-details
     And the user provides bank-details and continues to check-answers page
     Then the user changes the uk-trading-name
     And the user adds 2 trading names

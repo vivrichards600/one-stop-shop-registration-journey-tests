@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.datatable.DataTable
 import org.scalatestplus.selenium.Chrome.textField
+import uk.gov.hmrc.test.ui.pages.BusinessContactDetailsPage.addBusinessContactDetails
 import uk.gov.hmrc.test.ui.pages.CommonPage.selectLink
 import uk.gov.hmrc.test.ui.pages._
 
@@ -187,6 +188,10 @@ class RegistrationStepDef extends BaseStepDef {
   When("""^the user completes details on the (.*) page$""") { (url: String, dataTable: DataTable) =>
     CommonPage.checkUrl(url)
     CommonPage.completeForm(dataTable)
+  }
+
+  When("""^the user provides business-contact-details$""") { () =>
+    addBusinessContactDetails()
   }
 
   When("""^the user provides bank-details and continues to check-answers page$""") { () =>
