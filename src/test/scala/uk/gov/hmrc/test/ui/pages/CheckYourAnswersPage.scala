@@ -42,5 +42,10 @@ object CheckYourAnswersPage extends BrowserDriver with Matchers {
 
   def changeTaxInEu(): Unit = selectLink("check-tax-in-eu")
 
-  def giveWebsiteAddress(): Unit = selectLink("check-give-website-address")
+  def giveWebsiteAddress(): WebsiteAddressesPage.type = {
+    CommonPage.checkUrl("check-answers")
+    selectLink("check-give-website-address")
+    CommonPage.checkUrl("check-give-website-address")
+    WebsiteAddressesPage
+  }
 }

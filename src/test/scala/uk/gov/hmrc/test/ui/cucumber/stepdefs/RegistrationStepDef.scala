@@ -107,17 +107,12 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.checkUrl("check-answers")
   }
 
-  And("the user adds {int} website addresses") { (numberOfWebsites: Int) =>
-    CommonPage.checkUrl("check-answers")
+  And("the user adds 2 website addresses") { () =>
     CheckYourAnswersPage.giveWebsiteAddress()
-
-    CommonPage.checkUrl("check-give-website-address")
-    WebsiteAddressesPage.addWebsiteAddress("www.example1.com")
-
-    CommonPage.selectAnswer("yes")
-
-    WebsiteAddressesPage.addWebsiteAddress("www.example2.com")
-    CommonPage.checkUrl("check-add-website-address")
+      .addWebsiteAddress("www.example1.com")
+      .addAnotherAddress()
+      .addWebsiteAddress("www.example2.com")
+      .addressCount shouldBe 2
   }
 
   And("the user adds de-registration details from check your answers page") { () =>
