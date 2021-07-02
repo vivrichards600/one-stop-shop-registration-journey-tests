@@ -23,11 +23,12 @@ Feature: Check Your Answers
     And the user adds 2 trading names and continues to check-answers page
     Then the user changes the tax in EU option
     And the user answers yes on the check-tax-in-eu page
-    And the user adds a "first" business "without an establishment" in "France" registered for tax in the EU
+    And the user adds France as country for business registered for tax in the EU
     And the user clicks continue on the first change-check-tax-details page
-    And the user answers yes on the check-add-tax-details page
-    And the user adds a "second" business "with an establishment" in "Germany" registered for tax in the EU
+    And adds Germany as another business registered with an establishment for tax in the EU from check-add-tax-details page
     And the user changes the second business to VAT not registered
+    And continues to check your answers page from change check tax details page
     And the user adds de-registration details from check your answers page
+    And continues to check your answers page from change check add deregistration page
     And the user adds 2 website addresses
     And the user removes website address 2 and continues to check your answers page

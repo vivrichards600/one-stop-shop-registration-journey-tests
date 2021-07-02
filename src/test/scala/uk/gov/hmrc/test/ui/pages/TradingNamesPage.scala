@@ -1,6 +1,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.scalatestplus.selenium.Chrome.textField
 import uk.gov.hmrc.test.ui.pages.WebsiteAddressesPage.driver
 
 import scala.jdk.CollectionConverters.asScalaBufferConverter
@@ -23,6 +24,13 @@ object TradingNamesPage {
   def addTradingName(tradingName: String): TradingNamesPage.type = {
     CommonPage.enterData(tradingName)
     this
+  }
+
+  def addFixedEstablishmentAddress(): ChangeCheckTaxDetailsPage.type = {
+    textField("line1").value = "1 Address"
+    textField("townOrCity").value = "A town"
+    CommonPage.clickContinue()
+    ChangeCheckTaxDetailsPage
   }
 
   def hasDifferentTradingName: TradingNamesPage.type = {

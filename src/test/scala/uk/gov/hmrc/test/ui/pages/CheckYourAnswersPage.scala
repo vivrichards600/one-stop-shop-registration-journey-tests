@@ -46,4 +46,10 @@ object CheckYourAnswersPage extends BrowserDriver with Matchers {
     CommonPage.checkUrl("check-give-website-address")
     WebsiteAddressesPage
   }
+
+  def changeDeregistrationDetails(): DeregistrationPage.type = {
+    CommonPage.checkUrl("check-answers")
+    selectLink("check-deregistered")
+    DeregistrationPage
+  }
 }

@@ -16,12 +16,11 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage, SalesChannelsPage}
 import io.cucumber.datatable.DataTable
-import org.scalatestplus.selenium.Chrome.textField
 import uk.gov.hmrc.test.ui.pages.BusinessContactDetailsPage.addBusinessContactDetails
-import uk.gov.hmrc.test.ui.pages.CommonPage.selectLink
-import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.CheckAddTaxDetailsPage.anotherBusinessRegisteredForTaxInEu
+import uk.gov.hmrc.test.ui.pages.CheckTaxInEUPage.businessRegisteredForTaxInEu
+import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage, SalesChannelsPage, _}
 
 import scala.jdk.CollectionConverters.asScalaBufferConverter
 
@@ -75,12 +74,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""^the user clicks continue on the (first|second) (.*) page$""") { (index: String, url: String) =>
-    index match {
-      case "first"  => CommonPage.checkUrl(url + "/1")
-      case "second" => CommonPage.checkUrl(url + "/2")
-      case _        => throw new Exception("Index doesn't exist")
-    }
-    CommonPage.clickContinue()
+    ChangeCheckTaxDetailsPage.continueToCheckAddTaxDetailsPage()
   }
 
   When("^the user clicks through the (.*) page$") { (url: String) =>
@@ -111,7 +105,8 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   And("the user adds 2 website addresses") { () =>
-    CheckYourAnswersPage.giveWebsiteAddress()
+    CheckYourAnswersPage
+      .giveWebsiteAddress()
       .addWebsiteAddress("www.example1.com")
       .addAnotherWebsiteAddress()
       .addWebsiteAddress("www.example2.com")
@@ -119,40 +114,27 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   And("the user adds de-registration details from check your answers page") { () =>
-    CommonPage.checkUrl("check-answers")
-    selectLink("check-deregistered")
+    CheckYourAnswersPage
+      .changeDeregistrationDetails()
+      .addDeregisteredCountryDetails()
 
-    CommonPage.checkUrl("check-deregistered")
-    CommonPage.selectAnswer("yes")
+  }
 
-    CommonPage.checkUrl("check-deregistered-country/1")
-    CommonPage.selectValueAutocomplete("Austria")
-
-    CommonPage.checkUrl("check-deregistered-eu-vat-number/1")
-    CommonPage.enterData("AT123")
-
-    CommonPage.checkUrl("check-add-deregistration")
-    CommonPage.selectAnswer("no")
-
-    CommonPage.checkUrl("check-answers")
+  And("continues to check your answers page from change check add deregistration page") { () =>
+    DeregistrationPage
+      .continuesToCheckYourAnswersPage()
   }
 
   And("the user changes the second business to VAT not registered") { () =>
-    CommonPage.selectLink("check-eu-vat\\/2")
+    ChangeCheckTaxDetailsPage.changeVatRegistered()
+      .notRegisteredForVat()
+      .addTaxIdentificationNumber()
+  }
 
-    CommonPage.checkUrl("check-eu-vat/2")
-    CommonPage.selectAnswer("no")
-
-    CommonPage.checkUrl("check-eu-tax-number/2")
-    CommonPage.enterData("ABC123")
-
-    CommonPage.checkUrl("change-check-tax-details/2")
-    CommonPage.clickContinue()
-
-    CommonPage.checkUrl("check-add-tax-details")
-    CommonPage.selectAnswer("no")
-
-    CommonPage.checkUrl("check-answers")
+  And("continues to check your answers page from change check tax details page") { () =>
+    ChangeCheckTaxDetailsPage
+      .continueToCheckAddTaxDetailsPage()
+      .continuesToCheckYourAnswersPage()
   }
 
   And("the user adds 2 trading names and continues to check-answers page") { () =>
@@ -203,38 +185,22 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.checkUrl(url)
   }
 
-  Then("the user adds a {string} business {string} in {string} registered for tax in the EU") {
-    (index: String, withEstablishment: String, country: String) =>
-      val i = index match {
-        case "first"  => 1
-        case "second" => 2
-        case _        => throw new Exception("Index doesn't exist")
-      }
-      CommonPage.checkUrl(s"check-eu-tax/$i")
+  Then("the user adds France as country for business registered for tax in the EU") { () =>
+    businessRegisteredForTaxInEu()
+      .addCountryRegisteredForTaxInEu("France")
+      .registeredForVat("FR123456789")
+      .withoutFixedEstablishment()
+      .headingText should include regex "France"
+  }
 
-      CommonPage.selectValueAutocomplete(country)
-
-      CommonPage.checkUrl(s"check-eu-vat/$i")
-      CommonPage.selectAnswer("yes")
-
-      CommonPage.checkUrl(s"check-eu-vat-number/$i")
-      CommonPage.enterData("FR123456789")
-
-      CommonPage.checkUrl(s"check-eu-fixed-establishment/$i")
-      withEstablishment match {
-        case "with an establishment" =>
-          CommonPage.selectAnswer("yes")
-
-          CommonPage.checkUrl(s"check-eu-trading-name/$i")
-          CommonPage.enterData("EU trading name")
-
-          CommonPage.checkUrl("check-eu-fixed-establishment-address/2")
-
-          textField("line1").value = "1 Address"
-          textField("townOrCity").value = "A town"
-          CommonPage.clickContinue()
-        case _                       => CommonPage.selectAnswer("no")
-      }
+  Then("adds Germany as another business registered with an establishment for tax in the EU from check-add-tax-details page") { () =>
+    anotherBusinessRegisteredForTaxInEu()
+      .addCountryRegisteredForTaxInEu("Germany")
+      .registeredForVat("DE123456789")
+      .withFixedEstablishment()
+      .addTradingName("EU Trading Name")
+      .addFixedEstablishmentAddress()
+      .headingText should include regex "Germany"
   }
 
   Then("""^the user submits their registration$""") { () =>
