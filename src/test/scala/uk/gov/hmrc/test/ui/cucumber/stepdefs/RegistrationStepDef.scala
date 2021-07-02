@@ -27,7 +27,7 @@ import scala.jdk.CollectionConverters.asScalaBufferConverter
 class RegistrationStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
-    CommonPage.goToStartOfJourney()
+    HomePage.goToOneStopShopRegistrationPage()
   }
 
   Given("a user is signed in") { () =>
@@ -82,8 +82,14 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.clickContinue()
   }
 
-  And("the business is responsible for reporting and paying VAT for all sales to consumers in EU countries") { () =>
-    CommonPage.businessResponsibleReportingPayingVATEUCountries()
+  And("the business is responsible for reporting and paying VAT for all sales in EU") { () =>
+    HomePage
+      .goToOneStopShopRegistrationPage()
+      .businessNotRegisteredInEuForOneStopShop()
+      .sellsFromNorthernIrelandToEu()
+      .businessInNorthernIreland()
+      .continueToReportAndPayVatOnSales()
+      .alreadyMadeSales()
   }
 
   When("^the user adds the day (.*) the month (.*) and the year (.*) on the (.*) date page$") {

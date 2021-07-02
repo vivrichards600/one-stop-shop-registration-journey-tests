@@ -30,10 +30,6 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
 
-  val url: String                = TestConfiguration.url("one-stop-shop-registration-frontend")
-  def goToStartOfJourney(): Unit =
-    driver.navigate().to(url)
-
   def enterData(data: String): Unit = {
     val inputId = "value"
     driver.findElement(By.id(inputId)).sendKeys(data)
@@ -86,20 +82,6 @@ object CommonPage extends BrowserDriver with Matchers {
     driver.findElement(continueButton).click()
 
   def continueButton: By = By.cssSelector(".govuk-button")
-
-  def businessResponsibleReportingPayingVATEUCountries(): Unit = {
-    checkUrl("already-eu-registered")
-    selectAnswer("no")
-
-    checkUrl("sell-from-northern-ireland")
-    selectAnswer("yes")
-
-    checkUrl("northern-ireland-business")
-    selectAnswer("yes")
-
-    checkUrl("business-pay")
-    clickContinue()
-  }
 
   def enterDate(day: String, month: String, year: String): Unit = {
     driver.findElement(By.id("value.day")).sendKeys(day)
