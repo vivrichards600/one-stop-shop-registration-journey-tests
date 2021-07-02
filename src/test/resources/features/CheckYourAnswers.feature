@@ -4,11 +4,14 @@ Feature: Check Your Answers
   Scenario: Changing answers in Check Your Answers
     Given the user accesses the service
     And the business is responsible for reporting and paying VAT for all sales to consumers in EU countries
+    And the user answers yes on the already-made-sales page
     And the user signs in as an Organisation Admin with VAT enrolment 100000001 and strong credentials
     And the user chooses to register for the one stop shop scheme
+    And the user answers no on the have-uk-trading-name page
+    And the user adds the day 1 the month 7 and the year 2021 on the date-of-first-sale date page
     And the user provides the business details
      | url                  | choice   |
-     | have-uk-trading-name | no       |
+#     | have-uk-trading-name | no       |
      | start-date           | continue |
      | tax-in-eu            | no       |
      | deregistered         | no       |

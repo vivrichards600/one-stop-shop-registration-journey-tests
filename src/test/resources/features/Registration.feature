@@ -4,8 +4,9 @@ Feature: Registering for One Stop Shop
     Given the user accesses the service
     And the user answers no on the already-eu-registered page
     And the user answers yes on the sell-from-northern-ireland page
-    And the user answers yes on the ni-business page
+    And the user answers yes on the northern-ireland-business page
     And the user clicks through the business-pay page
+    And the user answers yes on the already-made-sales page
     And the user signs in as an Organisation Admin with VAT enrolment 100000001 and strong credentials
     And the user chooses Yes on the confirm-vat-details page
     And the user answers yes on the have-uk-trading-name page
@@ -13,6 +14,7 @@ Feature: Registering for One Stop Shop
     And the user answers yes on the add-uk-trading-name page
     And the user adds Foo Two on the second uk-trading-name page
     And the user answers no on the add-uk-trading-name page
+    And the user adds the day 1 the month 7 and the year 2021 on the date-of-first-sale date page
     And the user clicks through the start-date page
     And the user answers yes on the tax-in-eu page
     And the user selects France on the first eu-tax page

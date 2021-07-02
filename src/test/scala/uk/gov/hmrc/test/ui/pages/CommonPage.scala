@@ -101,4 +101,9 @@ object CommonPage extends BrowserDriver with Matchers {
     clickContinue()
   }
 
+  def enterDate(day: String, month: String, year: String): Unit = {
+    driver.findElement(By.id("value.day")).sendKeys(day)
+    driver.findElement(By.id("value.month")).sendKeys(month)
+    driver.findElement(By.id("value.year")).sendKeys(year)
+  }
 }

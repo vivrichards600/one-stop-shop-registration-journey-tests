@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage, SalesChannelsPage}
 import io.cucumber.datatable.DataTable
 import org.scalatestplus.selenium.Chrome.textField
 import uk.gov.hmrc.test.ui.pages.BusinessContactDetailsPage.addBusinessContactDetails
@@ -89,6 +90,13 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("the business is responsible for reporting and paying VAT for all sales to consumers in EU countries") { () =>
     CommonPage.businessResponsibleReportingPayingVATEUCountries()
+  }
+
+  When("^the user adds the day (.*) the month (.*) and the year (.*) on the (.*) date page$") {
+    (day: String, month: String, year: String, url: String) =>
+      CommonPage.checkUrl(url)
+      CommonPage.enterDate(day, month, year)
+      CommonPage.clickContinue()
   }
 
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
@@ -254,7 +262,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("""^the user picks (Online Marketplace|Mixed|Not Online Marketplace) on the how-do-you-sell page$""") {
     answer: String =>
-      CommonPage.checkUrl("how-do-you-sell")
+      CommonPage.checkUrl("sales-on-marketplaces")
       SalesChannelsPage.selectChoice(answer)
       CommonPage.clickContinue()
   }
