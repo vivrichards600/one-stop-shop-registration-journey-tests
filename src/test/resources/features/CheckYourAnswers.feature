@@ -11,7 +11,6 @@ Feature: Check Your Answers
     And the user adds the day 1 the month 7 and the year 2021 on the date-of-first-sale date page
     And the user provides the business details
      | url                  | choice   |
-#     | have-uk-trading-name | no       |
      | start-date           | continue |
      | tax-in-eu            | no       |
      | deregistered         | no       |
