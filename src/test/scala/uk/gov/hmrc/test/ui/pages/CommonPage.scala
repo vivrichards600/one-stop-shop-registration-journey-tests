@@ -79,4 +79,10 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def clickContinue(): Unit =
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+
+  def enterDate(day: String, month: String, year: String): Unit = {
+    driver.findElement(By.id("value.day")).sendKeys(day)
+    driver.findElement(By.id("value.month")).sendKeys(month)
+    driver.findElement(By.id("value.year")).sendKeys(year)
+  }
 }

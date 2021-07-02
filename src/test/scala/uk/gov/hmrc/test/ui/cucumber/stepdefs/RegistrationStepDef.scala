@@ -82,6 +82,13 @@ class RegistrationStepDef extends BaseStepDef {
     CommonPage.clickContinue()
   }
 
+  When("^the user adds the day (.*) the month (.*) and the year (.*) on the (.*) date page$") {
+    (day: String, month: String, year: String, url: String) =>
+      CommonPage.checkUrl(url)
+      CommonPage.enterDate(day, month, year)
+      CommonPage.clickContinue()
+  }
+
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
     CommonPage.checkUrl(url)
     CommonPage.selectAnswer(data)
@@ -122,9 +129,9 @@ class RegistrationStepDef extends BaseStepDef {
       CommonPage.clickContinue()
   }
 
-  When("""^the user picks (Online Marketplace|Mixed|Not Online Marketplace) on the how-do-you-sell page$""") {
+  When("""^the user picks (Online Marketplace|Mixed|Not Online Marketplace) on the sales-on-marketplaces page$""") {
     answer: String =>
-      CommonPage.checkUrl("how-do-you-sell")
+      CommonPage.checkUrl("sales-on-marketplaces")
       SalesChannelsPage.selectChoice(answer)
       CommonPage.clickContinue()
   }
