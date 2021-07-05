@@ -15,6 +15,11 @@ object WebsiteAddressesPage extends BrowserDriver{
     this
   }
 
+  def doesNotAddWebsiteAddress(): BusinessContactDetailsPage.type = {
+    CommonPage.selectAnswer("no")
+    BusinessContactDetailsPage
+  }
+
   def chooseToNotAddAnotherWebsiteAddress(): CheckYourAnswersPage.type = {
     CommonPage.selectAnswer("no")
     CommonPage.checkUrl("check-answers")

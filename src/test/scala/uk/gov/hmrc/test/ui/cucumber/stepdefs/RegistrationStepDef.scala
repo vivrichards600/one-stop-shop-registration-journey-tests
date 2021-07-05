@@ -22,8 +22,6 @@ import uk.gov.hmrc.test.ui.pages.CheckAddTaxDetailsPage.anotherBusinessRegistere
 import uk.gov.hmrc.test.ui.pages.CheckTaxInEUPage.businessRegisteredForTaxInEu
 import uk.gov.hmrc.test.ui.pages.{AlreadyMadeSalesPage, AuthPage, CheckVatDetailsPage, CommonPage, SalesChannelsPage, _}
 
-import scala.jdk.CollectionConverters.asScalaBufferConverter
-
 class RegistrationStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
@@ -152,17 +150,15 @@ class RegistrationStepDef extends BaseStepDef {
     TradingNamesPage.chooseToNotAddAnotherTradingName()
   }
 
-  When("""^the user provides the business details$""") { (dataTable: DataTable) =>
-    dataTable.asMaps[String, String](classOf[String], classOf[String]).asScala.foreach { row =>
-      val url    = row.get("url")
-      val choice = row.get("choice")
-
-      CommonPage.checkUrl(url)
-      choice match {
-        case "continue" => CommonPage.clickContinue()
-        case _          => CommonPage.selectAnswer(choice)
-      }
-    }
+  When("""^the user provides the business details$""") { () =>
+    TradingNamesPage
+      .doesNotHaveDifferentTradingName
+      .withFirstSaleDate("01", "07", "2021")
+      .confirmsSaleStartDate()
+      .businessNotRegisteredForTaxInEu()
+      .businessNotDeregistered()
+      .doesNotHaveAnOnlineMarketPlace()
+      .doesNotAddWebsiteAddress()
   }
 
   Then("""^the user should be on the (.*) page$""") { (url: String) =>

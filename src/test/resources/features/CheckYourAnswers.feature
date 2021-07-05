@@ -5,15 +5,7 @@ Feature: Check Your Answers
     Given the business is responsible for reporting and paying VAT for all sales in EU
     And the user signs in as an Organisation Admin with VAT enrolment 100000001 and strong credentials
     And the user chooses to register for the one stop shop scheme
-    And the user answers no on the have-uk-trading-name page
-    And the user adds the day 1 the month 7 and the year 2021 on the date-of-first-sale date page
     And the user provides the business details
-     | url                  | choice   |
-     | start-date           | continue |
-     | tax-in-eu            | no       |
-     | deregistered         | no       |
-     | online-marketplace   | no       |
-     | give-website-address | no       |
     And the user provides business-contact-details
     And the user provides bank-details and continues to check-answers page
     And the user changes the uk-trading-name

@@ -16,4 +16,14 @@ object DeregistrationPage {
     selectAnswer("no")
     CheckYourAnswersPage
   }
+
+  def businessNotDeregistered() : DeregistrationPage.type = {
+    selectAnswer("no")
+    DeregistrationPage
+  }
+
+  def doesNotHaveAnOnlineMarketPlace() : WebsiteAddressesPage.type = {
+    selectAnswer("no")
+    WebsiteAddressesPage
+  }
 }

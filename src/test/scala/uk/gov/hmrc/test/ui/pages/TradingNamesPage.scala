@@ -2,11 +2,11 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 import org.scalatestplus.selenium.Chrome.textField
-import uk.gov.hmrc.test.ui.pages.WebsiteAddressesPage.driver
+import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import scala.jdk.CollectionConverters.asScalaBufferConverter
 
-object TradingNamesPage {
+object TradingNamesPage extends BrowserDriver {
 
   def tradingNameCount: Int = driver.findElements(By.className("hmrc-add-to-a-list__identifier")).asScala.toList.size
 
@@ -39,4 +39,19 @@ object TradingNamesPage {
     this
   }
 
+  def doesNotHaveDifferentTradingName:TradingNamesPage.type = {
+    CommonPage.selectAnswer("no")
+    this
+  }
+
+  def withFirstSaleDate(day:String, month: String, year: String): TradingNamesPage.type = {
+    CommonPage.enterDate(day, month, year)
+    CommonPage.clickContinue()
+    this
+  }
+
+  def confirmsSaleStartDate(): CheckTaxInEUPage.type = {
+    CommonPage.clickContinue()
+    CheckTaxInEUPage
+  }
 }

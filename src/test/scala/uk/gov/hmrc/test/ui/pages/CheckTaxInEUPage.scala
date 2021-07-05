@@ -39,4 +39,9 @@ object CheckTaxInEUPage {
     selectAnswer("yes")
     CheckTaxInEUPage
   }
+
+  def businessNotRegisteredForTaxInEu(): DeregistrationPage.type = {
+    selectAnswer("no")
+    DeregistrationPage
+  }
 }
